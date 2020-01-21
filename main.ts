@@ -1,4 +1,4 @@
-// When the enemy overlaps the player, 
+// When the enemy overlaps the player,
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
@@ -114,7 +114,7 @@ function Hero () {
 `, SpriteKind.Player)
     // Set hero's x position
     hero.setPosition(0, 0)
-    // It moves her player in 
+    // It moves her player in
     //
     // all directions
     controller.moveSprite(hero, 200, 200)
