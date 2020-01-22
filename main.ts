@@ -1,7 +1,13 @@
+// When B is pressed, hero activates cheat code.
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 // When the enemy overlaps the player,
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
+    pause(1000)
+    Hero()
 })
 function Enem () {
     bad_guy = sprites.create(img`
@@ -73,7 +79,7 @@ function Pro () {
 . . . . . . . . . . . . . . . 5 . . . . 
 . . . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . . . 
-`, hero, -60, 0)
+`, hero, Math.randomRange(0, 120), Math.randomRange(0, 120))
     projectile.setKind(SpriteKind.Projectile)
 }
 function Hero () {
@@ -121,7 +127,9 @@ function Hero () {
     // It makes sure the hero is always on the screen.
     hero.setFlag(SpriteFlag.StayInScreen, true)
     hero.setKind(SpriteKind.Player)
-    info.setLife(3)
+}
+function Cheat_code () {
+	
 }
 info.onLifeZero(function () {
     game.over(false)
@@ -130,13 +138,16 @@ let projectile: Sprite = null
 let hero: Sprite = null
 let bad_guy: Sprite = null
 // Adds a timer fr the game
-info.startCountdown(50)
+info.startCountdown(20)
 // It shows text directions for the game
-game.splash("Fight back against the banana warriors!", "")
+game.splash("Escape the police!", "")
 Hero()
 Enem()
 Pro()
+info.setLife(3)
 // Repeats enemy so that it comes back every second
 game.onUpdateInterval(1000, function () {
-    Enem()
+    for (let index = 0; index < 1; index++) {
+        Enem()
+    }
 })
